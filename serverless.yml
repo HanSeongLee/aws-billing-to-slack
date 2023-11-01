@@ -10,7 +10,7 @@ provider:
   name: aws
   # Sane defaults, easy for multi-account/multi-region organizations
   profile: ${param:aws_profile, env:AWS_PROFILE, 'default'}
-  region: ${env:AWS_REGION, env:AWS_DEFAULT_REGION, 'us-east-1'}
+  region: ${env:AWS_REGION, env:AWS_DEFAULT_REGION, 'ap-northeast-2'}
   runtime: python3.10
 
   iam:
@@ -37,8 +37,8 @@ functions:
     timeout: 10
 
     events:
-      # Every day at 15:00 UTC / 10am CDT
-      - schedule: cron(0 15 * * ? *)
+      # Every day at 15:00 UTC / 10am CDT - cron(0 15 * * ? *)
+      - schedule: cron(0 0 ? * MON-FRI *)
 
     environment:
       GROUP_BY: ${param:group, 'SERVICE'}
