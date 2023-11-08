@@ -211,7 +211,7 @@ def report_cost(group_by: str = "SERVICE", length: int = 5, cost_aggregation: st
                    f"${allowed_credits_per_day:,.2f} for the day."
                   )
     else:
-        summary = f"{account_name} 계정의 어제 비용은 총 ${total_costs[-1]:,.2f} 입니다."
+        summary = f"{account_name} 계정의 {yesterday.strftime('%Y-%m-%d')} 비용은 총 ${total_costs[-1]:,.2f} 입니다."
 
     return summary, buffer, cost_per_day_by_service
 
